@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <description>
+      small app login in TestX[via Google]
+    </description>
+    <filter>
+        <filter-name>AccessTokenCheck</filter-name>
+        <filter-class>com.testapp.AccessTokenCheck</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AccessTokenCheck</filter-name>
+        <url-pattern>*</url-pattern>
+    </filter-mapping>
+    <servlet>
+        <servlet-name>AuthCallServlet</servlet-name>
+        <servlet-class>com.testapp.AuthCallServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AuthCallServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AccessTokenCall</servlet-name>
+        <servlet-class>com.testapp.AccessTokenCall</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AccessTokenCall</servlet-name>
+        <url-pattern>/token</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>LoggedUserServlet</servlet-name>
+        <servlet-class>com.testapp.LoggedUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoggedUserServlet</servlet-name>
+        <url-pattern>/logged</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+</web-app>
